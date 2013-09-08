@@ -14,7 +14,7 @@ class Migration(SchemaMigration):
             ('created', self.gf('model_utils.fields.AutoCreatedField')(default=datetime.datetime.now)),
             ('modified', self.gf('model_utils.fields.AutoLastModifiedField')(default=datetime.datetime.now)),
             ('user', self.gf('django.db.models.fields.related.OneToOneField')(related_name='employee', unique=True, to=orm['auth.User'])),
-            ('photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('photo', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True)),
             ('status', self.gf('django.db.models.fields.PositiveSmallIntegerField')()),
             ('phone', self.gf('django.db.models.fields.CharField')(max_length=16)),
             ('birthday_date', self.gf('django.db.models.fields.DateField')()),
@@ -106,7 +106,7 @@ class Migration(SchemaMigration):
             'job_position': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['employees.JobPosition']"}),
             'modified': ('model_utils.fields.AutoLastModifiedField', [], {'default': 'datetime.datetime.now'}),
             'phone': ('django.db.models.fields.CharField', [], {'max_length': '16'}),
-            'photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'photo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True'}),
             'status': ('django.db.models.fields.PositiveSmallIntegerField', [], {}),
             'user': ('django.db.models.fields.related.OneToOneField', [], {'related_name': "'employee'", 'unique': 'True', 'to': u"orm['auth.User']"})
         },
