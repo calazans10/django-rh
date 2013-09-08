@@ -4,6 +4,7 @@ from django.db.models.loading import get_model
 from django.template.defaultfilters import slugify
 from emailusernames.utils import create_user
 from employees.models import Employee, Department, JobPosition
+from rh_system.urls import urlpatterns
 
 
 def clear_model(app, model_cls):
@@ -36,17 +37,17 @@ def make_user(first_name, last_name):
     user.first_name = first_name
     user.last_name = last_name
     user.is_staff = True
-    user.superuser = True
+    user.is_superuser = True
     user.save()
     return user
 
 
 def make_employee(first_name, last_name, phone, birthday_date, department,
-                  job_postion):
+                  job_position):
     user = make_user(first_name, last_name)
     employee = Employee(user=user, status=10, phone=phone,
                         birthday_date=birthday_date, department=department,
-                        job_postion=job_postion)
+                        job_position=job_position)
     employee.save()
     return employee
 
