@@ -1,4 +1,3 @@
-# Django settings for rh_system project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -105,7 +104,6 @@ INSTALLED_APPS = (
 
     'south',
     'django_extensions',
-    'django-model-utils',
 
     'companies',
 )

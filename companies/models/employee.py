@@ -13,6 +13,7 @@ STATUS_CHOICES = (
 class Employee(TimeStampedModel):
     STATUS = Choices(*STATUS_CHOICES)
 
+    company = models.ForeignKey('companies.Company')
     first_name = models.CharField('Nome', max_length=255)
     last_name = models.CharField('Sobrenome', max_length=255)
     photo = models.ImageField(upload_to='employee_photo')
