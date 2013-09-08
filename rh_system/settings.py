@@ -105,7 +105,7 @@ INSTALLED_APPS = (
     'south',
     'django_extensions',
 
-    'companies',
+    'employees',
 )
 
 # A sample logging configuration. The only tangible logging
