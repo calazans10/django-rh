@@ -13,18 +13,13 @@ STATUS_CHOICES = (
 class Employee(TimeStampedModel):
     STATUS = Choices(*STATUS_CHOICES)
 
-    first_name = models.CharField('Nome', max_length=255)
-    last_name = models.CharField('Sobrenome', max_length=255)
+    user = models.OneToOneField('auth.User', related_name='employee')
     photo = models.ImageField(upload_to='employee_photo')
-    email = models.EmailField('E-mail')
     status = models.PositiveSmallIntegerField('Status', choices=STATUS)
     phone = models.CharField('Telefone', max_length=16)
     birthday_date = models.DateField('Data de Nascimento')
     department = models.ForeignKey('employees.Department')
     job_position = models.ForeignKey('employees.JobPosition')
-
-    def get_full_name(self):
-        return ' '.join([self.first_name, self.last_name])
 
     def __unicode__(self):
         return self.get_full_name()

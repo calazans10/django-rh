@@ -81,6 +81,12 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'emailusernames.backends.EmailAuthBackend',
+    # Uncomment the following to make Django tests pass:
+    # 'django.contrib.auth.backends.ModelBackend',
+)
+
 ROOT_URLCONF = 'rh_system.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -103,6 +109,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'south',
+    'emailusernames',
     'django_extensions',
 
     'employees',
