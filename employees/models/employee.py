@@ -14,7 +14,8 @@ class Employee(TimeStampedModel):
     STATUS = Choices(*STATUS_CHOICES)
 
     user = models.OneToOneField('auth.User', related_name='employee')
-    photo = models.ImageField(upload_to='employee_photo', null=True)
+    photo = models.ImageField('Foto', upload_to='employee_photo', null=True,
+                              blank=True)
     status = models.PositiveSmallIntegerField('Status', choices=STATUS)
     phone = models.CharField('Telefone', max_length=16)
     birthday_date = models.DateField('Data de Nascimento')
@@ -22,7 +23,7 @@ class Employee(TimeStampedModel):
     job_position = models.ForeignKey('employees.JobPosition')
 
     def __unicode__(self):
-        return self.get_full_name()
+        return self.user.get_full_name()
 
     class Meta:
         app_label = 'employees'

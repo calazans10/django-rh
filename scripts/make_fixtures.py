@@ -4,7 +4,6 @@ from django.db.models.loading import get_model
 from django.template.defaultfilters import slugify
 from emailusernames.utils import create_user
 from employees.models import Employee, Department, JobPosition
-from rh_system.urls import urlpatterns
 
 
 def clear_model(app, model_cls):
@@ -45,26 +44,31 @@ def make_user(first_name, last_name):
 def make_employee(first_name, last_name, phone, birthday_date, department,
                   job_position):
     user = make_user(first_name, last_name)
-    employee = Employee(user=user, status=10, phone=phone,
+    employee = Employee(user=user, status=20, phone=phone,
                         birthday_date=birthday_date, department=department,
                         job_position=job_position)
     employee.save()
     return employee
 
 
+def make_data():
+    make_department('Comercial')
+    make_department('Financeiro')
+    rh = make_department('Recursos Humanos')
+    make_department('Jurídico')
+    make_department('TI')
+
+    make_job_position('CEO')
+    make_job_position('CTO')
+    gerente = make_job_position('Gerente')
+    make_job_position('Desenvolvedor')
+    make_job_position('Designer')
+    make_job_position('Operacional')
+
+    birthday_date = date(1985, 10, 20)
+    make_employee('Paula', 'Rangel', '2185943327', birthday_date, rh, gerente)
+
+
 def run():
     clear_data()
-
-    comercial = make_department('Comercial')
-    # make_department('Financeiro')
-    # make_department('Recursos Humanos')
-    # make_department('Jurídico')
-    # make_department('TI')
-
-    ceo = make_job_position('CEO')
-    # make_job_position('CTO')
-    # make_job_position('Gerente')
-    # make_job_position('Operacional')
-
-    make_employee('Jeferson', 'Farias Calazans', '21-95184567',
-                  date(1989, 10, 10), comercial, ceo)
+    make_data()
