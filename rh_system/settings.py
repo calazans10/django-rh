@@ -109,11 +109,20 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'south',
+    'ajax_select',
     'emailusernames',
     'django_extensions',
 
     'employees',
 )
+
+AJAX_LOOKUP_CHANNELS = {
+    'user': {'model': 'auth.user', 'search_field': 'email'},
+}
+
+AJAX_SELECT_BOOTSTRAP = True
+AJAX_SELECT_INLINES = 'inline'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
