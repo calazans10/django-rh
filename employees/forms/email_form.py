@@ -2,7 +2,7 @@
 import re
 from django import forms
 from employees.models import Employee
-from employees.notification import EmployeeNotification
+from employees.tasks import send_email
 
 
 class EmailForm(forms.Form):
@@ -19,7 +19,4 @@ class EmailForm(forms.Form):
         _selected_action = self._normalize(_selected_action)
         employees = Employee.objects.filter(id__in=_selected_action)
 
-        for employee in employees:
-            notification = EmployeeNotification(employee, message)
-            notification.send()
-        return 'Ok'
+        send_email.delay(employees, message)

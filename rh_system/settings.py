@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
 from unipath import Path
+import djcelery
+
+
+djcelery.setup_loader()
 
 
 PROJECT_DIR = Path(__file__).parent
+
+BROKER_URL = 'amqp://calazans:123456@localhost:5672/rh_system'
+
+DEFAULT_FROM_EMAIL = 'Jeferson <calazans10@gmail.com>'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -76,8 +86,6 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'emailusernames.backends.EmailAuthBackend',
-    # Uncomment the following to make Django tests pass:
-    # 'django.contrib.auth.backends.ModelBackend',
 )
 
 ROOT_URLCONF = 'rh_system.urls'
@@ -97,6 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'south',
+    'djcelery',
     'ajax_select',
     'emailusernames',
     'django_extensions',
