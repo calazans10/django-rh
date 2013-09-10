@@ -33,10 +33,28 @@ def send_email_action(self, request, queryset):
 
     return render_to_response(template_name, context,
                               context_instance=RequestContext(request))
-
-
 description = 'Enviar email para os Funcionários selecionados'
 send_email_action.short_description = description
+
+
+def change_status_action(self, request, queryset):
+    for obj in queryset:
+        if obj.status is 20:
+            obj.status = 10
+        else:
+            obj.status = 20
+        obj.save()
+description = 'Alterar status dos Funcionários selecionados'
+change_status_action.short_description = description
+
+
+def admin_permission_action(self, request, queryset):
+    for obj in queryset:
+        obj.user.is_staff = True
+        obj.user.is_superuser = True
+        obj.user.save()
+description = 'Permitir acesso ao admin para os Funcionários selecionados'
+admin_permission_action.short_description = description
 
 
 class EmployeeAdmin(AjaxSelectAdmin):
@@ -61,6 +79,7 @@ class EmployeeAdmin(AjaxSelectAdmin):
                     'get_job_position', 'status',)
     list_filter = ('status', 'department__name', 'job_position__name')
     ordering = ['-created']
-    actions = [send_email_action]
+    actions = [send_email_action, change_status_action,
+               admin_permission_action]
 
 admin.site.register(Employee, EmployeeAdmin)
