@@ -47,8 +47,18 @@ class EmployeeAdmin(AjaxSelectAdmin):
     get_name.short_description = 'Nome'
     get_name.admin_order_field = 'user__name'
 
-    list_display = ('get_name', 'birthday_date', 'department', 'job_position',
-                    'status',)
+    def get_department(self, obj):
+        return obj.department.name
+    get_department.short_description = 'Departamento'
+    get_department.admin_order_field = 'department__name'
+
+    def get_job_position(self, obj):
+        return obj.job_position.name
+    get_job_position.short_description = 'Cargo'
+    get_job_position.admin_order_field = 'job_position__name'
+
+    list_display = ('get_name', 'birthday_date', 'get_department',
+                    'get_job_position', 'status',)
     list_filter = ('status', 'department__name', 'job_position__name')
     ordering = ['-created']
     actions = [send_email_action]
