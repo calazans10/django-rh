@@ -15,6 +15,7 @@ class EmployeeNotificationTest(TestCase):
         self.assertEqual('oi', context['message'])
 
     def test_send(self):
+        # TODO: refatorar
         notification = EmployeeNotification(self.employee, 'oi')
 
         try:

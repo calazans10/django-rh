@@ -25,6 +25,18 @@ class DepartmentAdminTest(TestCase):
 
         self.assertEqual('Gerente', employee.get_job_position(self.employee))
 
+    def test_change_status_action(self):
+        # TODO: criar
+        pass
+
+    def test_admin_permission_action(self):
+        # TODO: criar
+        pass
+
+    def test_send_email_action(self):
+        # TODO: criar
+        pass
+
     def setUp(self):
         department = mommy.make('employees.Department',
                                 name='Recursos Humanos')

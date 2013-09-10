@@ -8,6 +8,7 @@ from employees.forms import EmailForm
 
 class EmailFormTest(TestCase):
     def test_normalize(self):
+        # TODO: refatorar
         form = EmailForm()
         self.assertEqual([self.employee.id], form._normalize(self.selected))
 
@@ -26,6 +27,7 @@ class EmailFormTest(TestCase):
                          u'Este campo é obrigatório.')
 
     def test_save(self):
+        # TODO: refatorar
         data = {'_selected_action': self.selected, 'message': 'oi'}
         form = EmailForm(data=data)
         form.is_valid()
