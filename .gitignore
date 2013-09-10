@@ -1,3 +1,4 @@
 env
 *.pyc
 /.ropeproject
+rh_system/media

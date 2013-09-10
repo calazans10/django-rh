@@ -15,8 +15,7 @@ class Employee(TimeStampedModel):
 
     user = models.OneToOneField('auth.User', related_name='employee',
                                 null=True, blank=True)
-    photo = models.ImageField('Foto', upload_to='employee_photo', null=True,
-                              blank=True)
+    photo = models.ImageField('Foto', upload_to='images/')
     status = models.PositiveSmallIntegerField('Status', choices=STATUS,
                                               default=20)
     phone = models.CharField('Telefone', max_length=16)

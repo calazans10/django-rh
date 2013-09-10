@@ -5,7 +5,6 @@ import djcelery
 
 djcelery.setup_loader()
 
-
 PROJECT_DIR = Path(__file__).parent
 
 BROKER_URL = 'amqp://calazans:123456@localhost:5672/rh_system'
@@ -16,6 +15,7 @@ EMAIL_HOST = 'localhost'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+SERVE_MEDIA = True
 
 ADMINS = (
     ('Jeferson Farias Calazans', 'calazans10@gmail.com'),
@@ -34,8 +34,6 @@ DATABASES = {
     }
 }
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
 TIME_ZONE = 'America/Sao_Paulo'
@@ -45,22 +43,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Absolute filesystem path to the directory that will hold user-uploaded files.
-# Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_URL = '/media/'
+MEDIA_ROOT = PROJECT_DIR.child('media')
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
 STATIC_URL = '/static/'
+STATIC_ROOT = PROJECT_DIR.child('static_root')
 
+ADMIN_MEDIA_PREFIX = STATIC_URL + "admin/"
 STATICFILES_DIRS = (PROJECT_DIR.child('static'),)
 TEMPLATE_DIRS = (PROJECT_DIR.child('templates'),)
 
@@ -90,9 +79,7 @@ AUTHENTICATION_BACKENDS = (
 
 ROOT_URLCONF = 'rh_system.urls'
 
-# Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'rh_system.wsgi.application'
-
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -120,12 +107,6 @@ AJAX_LOOKUP_CHANNELS = {
 AJAX_SELECT_BOOTSTRAP = True
 AJAX_SELECT_INLINES = 'inline'
 
-
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
