@@ -4,6 +4,11 @@ from employees.models import JobPosition
 
 
 class JobPositionAdmin(admin.ModelAdmin):
-    pass
+    def get_employees(self, obj):
+        return obj.employee_set.all().count()
+    get_employees.short_description = 'Funcionários'
+
+    list_display = ('name', 'get_employees',)
+    ordering = ['name']
 
 admin.site.register(JobPosition, JobPositionAdmin)

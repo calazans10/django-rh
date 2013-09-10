@@ -76,11 +76,9 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'emailusernames.backends.EmailAuthBackend',
+    # Uncomment the following to make Django tests pass:
+    # 'django.contrib.auth.backends.ModelBackend',
 )
-
-DEFAULT_FROM_EMAIL = 'Contato <contato@xpto.com.br>'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'localhost'
 
 ROOT_URLCONF = 'rh_system.urls'
 

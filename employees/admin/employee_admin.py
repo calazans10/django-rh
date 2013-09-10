@@ -49,6 +49,8 @@ class EmployeeAdmin(AjaxSelectAdmin):
 
     list_display = ('get_name', 'birthday_date', 'department', 'job_position',
                     'status',)
+    list_filter = ('status', 'department__name', 'job_position__name')
+    ordering = ['-created']
     actions = [send_email_action]
 
 admin.site.register(Employee, EmployeeAdmin)
