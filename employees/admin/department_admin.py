@@ -10,5 +10,6 @@ class DepartmentAdmin(admin.ModelAdmin):
 
     list_display = ('name', 'get_employees',)
     ordering = ['name']
+    search_fields = ['name']
 
 admin.site.register(Department, DepartmentAdmin)

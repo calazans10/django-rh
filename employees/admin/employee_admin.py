@@ -81,5 +81,7 @@ class EmployeeAdmin(AjaxSelectAdmin):
     ordering = ['-created']
     actions = [send_email_action, change_status_action,
                admin_permission_action]
+    search_fields = ['user__first_name', 'user__last_name', 'user__email',
+                     'department__name', 'job_position__name']
 
 admin.site.register(Employee, EmployeeAdmin)
