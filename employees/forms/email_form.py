@@ -10,7 +10,7 @@ class EmailForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea, label='Mensagem:')
 
     def _normalize(self, _selected_action):
-        return map(int, re.sub("[\[\]u' ',]", '', _selected_action))
+        return map(int, re.sub("[\[\]u',]", '', _selected_action).split(' '))
 
     def save(self):
         data = self.cleaned_data

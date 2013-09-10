@@ -8,7 +8,6 @@ from employees.forms import EmailForm
 
 class EmailFormTest(TestCase):
     def test_normalize(self):
-        # TODO: refatorar
         form = EmailForm()
         self.assertEqual([self.employee.id], form._normalize(self.selected))
 
