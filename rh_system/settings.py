@@ -9,7 +9,7 @@ PROJECT_DIR = Path(__file__).parent
 
 BROKER_URL = 'amqp://calazans:123456@localhost:5672/rh_system'
 
-DEFAULT_FROM_EMAIL = 'Jeferson <calazans10@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Contato <contato@xpto.com.br>'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'localhost'
 
@@ -80,6 +80,8 @@ AUTHENTICATION_BACKENDS = (
 ROOT_URLCONF = 'rh_system.urls'
 
 WSGI_APPLICATION = 'rh_system.wsgi.application'
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 INSTALLED_APPS = (
     'django.contrib.auth',

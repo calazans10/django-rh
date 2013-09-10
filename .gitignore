@@ -3,3 +3,5 @@ env
 /.ropeproject
 rh_system/media
 celerybeat-schedule
+/htmlcov
+.coverage
