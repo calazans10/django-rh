@@ -7,7 +7,7 @@ djcelery.setup_loader()
 
 PROJECT_DIR = Path(__file__).parent
 
-BROKER_URL = 'amqp://calazans:123456@localhost:5672/rh_system'
+BROKER_URL = 'django://'
 
 DEFAULT_FROM_EMAIL = 'Contato <contato@xpto.com.br>'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'djcelery',
     'ajax_select',
     'emailusernames',
+    'kombu.transport.django',
     'django_extensions',
 
     'employees',
