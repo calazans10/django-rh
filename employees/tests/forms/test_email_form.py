@@ -12,7 +12,8 @@ class EmailFormTest(TestCase):
         self.assertEqual([self.employee.id], form._normalize(self.selected))
 
     def test_valid_form(self):
-        data = {'_selected_action': self.selected, 'message': 'oi'}
+        data = {'_selected_action': self.selected, 'subject': 'Bem-vindo',
+                'message': 'oi'}
         form = EmailForm(data=data)
 
         self.assertTrue(form.is_valid())
@@ -24,17 +25,16 @@ class EmailFormTest(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors['message'][0],
                          u'Este campo é obrigatório.')
+        self.assertEqual(form.errors['subject'][0],
+                         u'Este campo é obrigatório.')
 
     def test_save(self):
-        # TODO: refatorar
-        data = {'_selected_action': self.selected, 'message': 'oi'}
+        data = {'_selected_action': self.selected, 'subject': 'Bem-vindo',
+                'message': 'oi'}
         form = EmailForm(data=data)
-        form.is_valid()
 
-        try:
-            form.save()
-        except Exception:
-            self.fail('Não foi possível executar a ação salvar.')
+        self.assertTrue(form.is_valid())
+        self.assertTrue(form.save())
 
     def setUp(self):
         department = mommy.make('employees.Department',

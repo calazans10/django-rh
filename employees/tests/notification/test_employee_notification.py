@@ -8,20 +8,16 @@ from employees.notification import EmployeeNotification
 
 class EmployeeNotificationTest(TestCase):
     def test_get_context(self):
-        notification = EmployeeNotification(self.employee, 'oi')
+        notification = EmployeeNotification(self.employee, 'Bem-vindo', 'oi')
         context = notification.get_context()
 
         self.assertEqual(self.employee, context['employee'])
         self.assertEqual('oi', context['message'])
 
     def test_send(self):
-        # TODO: refatorar
-        notification = EmployeeNotification(self.employee, 'oi')
+        notification = EmployeeNotification(self.employee, 'Bem-vindo', 'oi')
 
-        try:
-            notification.send()
-        except Exception:
-            self.fail('Notificação não foi enviada.')
+        self.assertTrue(notification.send())
 
     def setUp(self):
         department = mommy.make('employees.Department',

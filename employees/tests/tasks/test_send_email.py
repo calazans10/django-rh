@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from datetime import date
 from model_mommy import mommy
 from emailusernames.utils import create_user
@@ -9,14 +10,15 @@ from employees.models import Employee
 
 class SendEmailTest(TestCase):
     def test_successful(self):
-        # TODO: refatorar
-        # employees = Employee.objects.all()
-        # result = send_email.delay(employees, 'oi')
+        employees = Employee.objects.all()
+        result = send_email.delay(employees, 'Bem-vindo', 'oi')
 
-        # self.assertTrue(result.successful())
-        pass
+        self.assertTrue(result.successful())
 
     def setUp(self):
+        settings.CELERY_ALWAYS_EAGER = True
+        settings.CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+
         department = mommy.make('employees.Department',
                                 name='Recursos Humanos')
         job_position = mommy.make('employees.JobPosition', name='Gerente')

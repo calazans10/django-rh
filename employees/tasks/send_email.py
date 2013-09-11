@@ -4,8 +4,8 @@ from employees.notification import EmployeeNotification
 
 
 @task()
-def send_email(employees, message):
+def send_email(employees, subject, message):
     for employee in employees:
-        notification = EmployeeNotification(employee, message)
+        notification = EmployeeNotification(employee, subject, message)
         notification.send()
     return 'Ok'

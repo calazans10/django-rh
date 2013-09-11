@@ -6,10 +6,10 @@ from django.template import loader, Context
 class EmployeeNotification(object):
     template_email = 'notification/email.html'
 
-    def __init__(self, employee, message):
+    def __init__(self, employee, subject, message):
         self.employee = employee
         self.message = message
-        self.subject = 'Comunicado'
+        self.subject = subject
         self.from_email = 'contato@xpto.com.br'
         self.to_email = self.employee.user.email
 
@@ -27,6 +27,7 @@ class EmployeeNotification(object):
                                          self.from_email, [self.to_email])
         message.attach_alternative(html_content, "text/html")
         message.send()
+        return 'Ok'
 
     def send(self):
         cxt = self.get_context()
