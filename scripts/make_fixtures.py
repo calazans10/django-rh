@@ -35,8 +35,6 @@ def make_user(first_name, last_name):
     user = create_user(email, '1234')
     user.first_name = first_name
     user.last_name = last_name
-    user.is_staff = True
-    user.is_superuser = True
     user.save()
     return user
 
