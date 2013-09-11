@@ -14,14 +14,16 @@ class Employee(TimeStampedModel):
     STATUS = Choices(*STATUS_CHOICES)
 
     user = models.OneToOneField('auth.User', related_name='employee',
-                                null=True, blank=True)
+                                null=True, blank=True, verbose_name=u'Usuário')
     photo = models.ImageField('Foto', upload_to='images/')
     status = models.PositiveSmallIntegerField('Status', choices=STATUS,
                                               default=20)
     phone = models.CharField('Telefone', max_length=16)
     birthday_date = models.DateField('Data de Nascimento')
-    department = models.ForeignKey('employees.Department')
-    job_position = models.ForeignKey('employees.JobPosition')
+    department = models.ForeignKey('employees.Department',
+                                   verbose_name=u'Departamento')
+    job_position = models.ForeignKey('employees.JobPosition',
+                                     verbose_name=u'Cargo')
 
     def __unicode__(self):
         return self.user.get_full_name()
