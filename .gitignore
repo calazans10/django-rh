@@ -1,7 +1,7 @@
 env
 *.pyc
 /.ropeproject
-rh_system/media
+django_rh/media
 celerybeat-schedule
 /htmlcov
 .coverage

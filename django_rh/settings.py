@@ -58,7 +58,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-SECRET_KEY = ')%25*!10nuwo^$utxt#d*$@o&l-os&b8b50pxq5e6xe4oddk!j'
+SECRET_KEY = '^z4(*0w(k-rx^0sn5ed8aib9$dbn0z3xu2r6u_^@%ct^wl7ul5'
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
@@ -77,9 +77,10 @@ AUTHENTICATION_BACKENDS = (
     'emailusernames.backends.EmailAuthBackend',
 )
 
-ROOT_URLCONF = 'rh_system.urls'
 
-WSGI_APPLICATION = 'rh_system.wsgi.application'
+ROOT_URLCONF = 'django_rh.urls'
+
+WSGI_APPLICATION = 'django_rh.wsgi.application'
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 

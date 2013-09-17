@@ -1,2 +1,2 @@
-web:  /usr/bin/env ./manage.py runserver 0.0.0.0:8000
+web: /usr/bin/env ./manage.py runserver 0.0.0.0:8000
 celeryd: python manage.py celery worker -B --loglevel=info
