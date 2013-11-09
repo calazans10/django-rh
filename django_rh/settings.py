@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from unipath import Path
 import djcelery
+import os
 
 
 djcelery.setup_loader()
@@ -17,6 +18,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 SERVE_MEDIA = True
 
+MYSQLPASSWORD = os.environ.get('MYSQLPASSWORD')
+
 ADMINS = (
     ('Jeferson Farias Calazans', 'calazans10@gmail.com'),
 )
@@ -28,7 +31,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'rh_system',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': MYSQLPASSWORD,
         'HOST': '127.0.0.1',
         'PORT': '',
     }
