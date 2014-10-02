@@ -1,3 +1,3 @@
-# django-rh
+# hr-system
 
-Simple rh system created to solve a [Sieve](http://sieve.com.br/) challenge
+Simple HR system created to solve a [Sieve's](http://sieve.com.br/) challenge
