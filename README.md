@@ -1,3 +1,3 @@
-# hr-system
+# django-rh
 
-Simple HR system created to solve a [Sieve's](http://sieve.com.br/) challenge
+Projeto criado para o desafio proposto pela [Sieve](http://sieve.com.br/)
